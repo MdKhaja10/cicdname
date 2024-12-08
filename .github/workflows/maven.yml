@@ -36,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: target/surefire-reports/  # Adjust the path if needed (for Maven Surefire reports)
+        path: ExtendReports/  # Adjust the path if needed (for Maven Surefire reports)
