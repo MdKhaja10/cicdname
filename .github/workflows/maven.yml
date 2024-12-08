@@ -20,11 +20,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
     - name: Build and Test with Maven
       run: mvn clean test -D"dataproviderthreadcount"="3" -D"cucumber.filter.tags"="@${{ github.event.inputs.tag }}"
+
+    # Upload the Maven test results as artifacts
+    - name: Upload Test Results as Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: target/surefire-reports/  # Adjust the path if needed (for Maven Surefire reports)
