@@ -27,4 +27,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build and Test with Maven
-      run: mvn clean test -Ddataproviderthreadcount=3 -Dcucumber.filter.tags=@${{ github.event.inputs.tag }}
+      run: mvn clean test -D"dataproviderthreadcount"="3" -D"cucumber.filter.tags"="${{ inputs.selectedTag }}"
